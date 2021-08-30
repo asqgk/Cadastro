@@ -4,7 +4,7 @@
   "description": "Node.js Rest Apis with Express, Sequelize & PostgreSQL, JWT Authentication.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test --timeout 2000 --exit"
+    "start": "nodemon server"
   },
   "keywords": [
     "nodejs",
@@ -28,6 +28,6 @@
     "sequelize": "^5.21.9"
   },
   "devDependencies": {
-    "chai-subset": "^1.6.0"
+    "nodemon": "^2.0.12"
   }
 }
