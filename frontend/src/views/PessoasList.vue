@@ -1,12 +1,21 @@
 <template>
   <div class="list row">
-    
     <div class="col-md-8">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Procurar pessoa por nome"
-          v-model="nome"/>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Procurar pessoa por nome"
+          v-model="nome"
+        />
         <div class="input-group-append">
-          <button @click="searchNome" class="btn btn-outline-secondary" type="button">Procurar</button>
+          <button
+            @click="searchNome"
+            class="btn btn-outline-secondary"
+            type="button"
+          >
+            Procurar
+          </button>
         </div>
       </div>
     </div>
@@ -14,7 +23,8 @@
     <div class="col-md-6">
       <h4>Pessoas Cadastradas</h4>
       <ul class="list-group">
-        <li class="list-group-item"
+        <li
+          class="list-group-item"
           :class="{ active: index == currentIndex }"
           v-for="(pessoa, index) in pessoas"
           :key="index"
@@ -24,28 +34,34 @@
         </li>
       </ul>
     </div>
-    
+
     <div class="col-md-6">
       <div v-if="PessoaAtual">
         <h4>Pessoa</h4>
         <div>
-          <label><strong>Nome:</strong></label> {{ PessoaAtual.nome }}
+          <label><strong>Nome:</strong></label>
+          {{ PessoaAtual.nome }}
         </div>
         <div>
-          <label><strong>Sobrenome:</strong></label> {{ PessoaAtual.sobrenome }}
+          <label><strong>Sobrenome:</strong></label>
+          {{ PessoaAtual.sobrenome }}
         </div>
         <div>
-          <label><strong>Sexo:</strong></label> {{ PessoaAtual.sexo }}
+          <label><strong>Sexo:</strong></label>
+          {{ PessoaAtual.sexo }}
         </div>
         <div>
-          <label><strong>Data Nascimento:</strong></label> {{ PessoaAtual.datanascimento }}
+          <label><strong>Data Nascimento:</strong></label>
+          {{ new Date(PessoaAtual.datanascimento) | moment('DD/MM/YYYY') }}
         </div>
         <div>
-          <label><strong>Numero:</strong></label> {{ PessoaAtual.numero }}
+          <label><strong>Numero:</strong></label>
+          {{ PessoaAtual.numero }}
         </div>
         <div>
-          <label><strong>Status:</strong></label> {{ PessoaAtual.status ? "Pode votar" : "Não pode votar" }}
-        </div>        
+          <label><strong>Status:</strong></label>
+          {{ PessoaAtual.status ? "Pode votar" : "Não pode votar" }}
+        </div>
       </div>
       <div v-else>
         <br />
@@ -90,7 +106,7 @@ export default {
       this.PessoaAtual = pessoa;
       this.currentIndex = index;
     },
-    
+
     searchNome() {
       PessoaDataService.findByNome(this.nome)
         .then(response => {

@@ -1,7 +1,6 @@
 <template>
   <div class="col-md-12">
     <div class="card card-container">
-              
       <form name="form" @submit.prevent="handleLogin">
         <div class="form-group">
           <label for="username">Nome de Usuário</label>
@@ -16,7 +15,9 @@
             v-if="errors.has('username')"
             class="alert alert-danger"
             role="alert"
-          >Você precisa inserir um nome de usuário.</div>
+          >
+            Você precisa inserir um nome de usuário.
+          </div>
         </div>
         <div class="form-group">
           <label for="password">Senha</label>
@@ -31,16 +32,23 @@
             v-if="errors.has('password')"
             class="alert alert-danger"
             role="alert"
-          >Você precisa inserir uma senha.</div>
+          >
+            Você precisa inserir uma senha.
+          </div>
         </div>
         <div class="form-group">
           <button class="btn btn-primary btn-block" :disabled="loading">
-            <span v-show="loading" class="spinner-border spinner-border-sm"></span>
+            <span
+              v-show="loading"
+              class="spinner-border spinner-border-sm"
+            ></span>
             <span>Entrar</span>
           </button>
         </div>
         <div class="form-group">
-          <div v-if="message" class="alert alert-danger" role="alert">{{message}}</div>
+          <div v-if="message" class="alert alert-danger" role="alert">
+            {{ message }}
+          </div>
         </div>
       </form>
     </div>
@@ -48,15 +56,15 @@
 </template>
 
 <script>
-import Usuario from '../models/usuario';
+import Usuario from "../models/usuario";
 
 export default {
-  name: 'Login',
+  name: "Login",
   data() {
     return {
-      usuario: new Usuario('', ''),
+      usuario: new Usuario("", ""),
       loading: false,
-      message: ''
+      message: ""
     };
   },
   computed: {
@@ -66,7 +74,7 @@ export default {
   },
   created() {
     if (this.loggedIn) {
-      this.$router.push('/profile');
+      this.$router.push("/profile");
     }
   },
   methods: {
@@ -79,9 +87,9 @@ export default {
         }
 
         if (this.usuario.username && this.usuario.password) {
-          this.$store.dispatch('auth/login', this.usuario).then(
+          this.$store.dispatch("auth/login", this.usuario).then(
             () => {
-              this.$router.push('/profile');
+              this.$router.push("/profile");
             },
             error => {
               this.loading = false;

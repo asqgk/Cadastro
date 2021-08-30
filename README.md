@@ -2,10 +2,10 @@
 
 ### BACKEND
 ```
-Acessar a pasta Cadastro\backend\ e rodar NPM INSTALL assim que concluir rodar NPM START
+Acessar o diretório Cadastro\backend\ e rodar NPM INSTALL assim que concluir rodar NPM START
 ```
 
 ### FRONTEND
 ```
-Acessar a pasta Cadastro\frontend\ e rodar NPM INSTALL assim que concluir rodar NPM RUN SERVE
+Acessar o diretório Cadastro\frontend\ e rodar NPM INSTALL assim que concluir rodar NPM RUN SERVE
 ```

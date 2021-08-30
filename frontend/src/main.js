@@ -7,12 +7,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import VeeValidate from 'vee-validate';
 import VueMask from 'v-mask';
 
+Vue.use(require('vue-moment'));
 
 Vue.use(VueMask);
 
 Vue.config.productionTip = false;
 
 Vue.use(VeeValidate);
+
 
 new Vue({
   router,

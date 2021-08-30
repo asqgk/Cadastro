@@ -3,20 +3,13 @@ const Pessoa = db.pessoa;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-    // if (!req.body.nome || !req.body.sexo || !req.body.datanascimento || !req.body.numero) {
-    //     res.status(400).send({
-    //         message: "O conteúdo não pode estar vazio!"
-    //     });
-    //     return;
-    // }
-
-    console.log(req.body)
-    if (!req.body.nome) {
+    if (!req.body.nome || !req.body.sexo || !req.body.datanascimento || !req.body.numero) {
         res.status(400).send({
             message: "O conteúdo não pode estar vazio!"
         });
         return;
     }
+    // console.log(req.body)
 
     const pessoa = {
         nome: req.body.nome,
