@@ -22,7 +22,7 @@ exports.create = (req, res) => {
 
     Pessoa.create(pessoa)
         .then(data => {
-            console.log(pessoa)
+            // console.log("controller.pessoa", pessoa)
             res.send(data);
         })
         .catch(err => {

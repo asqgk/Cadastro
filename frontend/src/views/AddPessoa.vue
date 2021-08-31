@@ -117,7 +117,7 @@
         class="alert"
         :class="successful ? 'alert-success' : 'alert-danger'"
       >
-        {{ message }}        
+        {{ message }}
       </div>
     </div>
   </div>
@@ -125,6 +125,7 @@
 
 <script>
 import PessoaDataService from "../services/PessoaDataService";
+import moment from "moment";
 
 export default {
   name: "add-pessoa",
@@ -137,7 +138,7 @@ export default {
         sexo: "",
         datanascimento: "",
         numero: "",
-        status: false
+        status: null
       },
       submitted: false,
       successful: false,
@@ -146,20 +147,28 @@ export default {
   },
   methods: {
     savePessoa() {
-      var data = {
+      let data = {
         nome: this.pessoa.nome,
         sobrenome: this.pessoa.sobrenome,
         sexo: this.pessoa.sexo,
         datanascimento: this.pessoa.datanascimento,
-        numero: this.pessoa.numero
+        numero: this.pessoa.numero,
       };
+
+      const birthDay = this.pessoa.datanascimento;
+      const age = Math.floor(
+        moment(new Date()).diff(moment(birthDay), "years", true)
+      );
+
+      (age >= 18) ? this.pessoa.status = true : this.pessoa.status = false  
 
       PessoaDataService.create(data)
         .then(response => {
           this.pessoa.id = response.data.id;
-          console.log(response.data);
+          this.pessoa.status = response.data.status;
           this.submitted = true;
           this.successful = true;
+          console.log(response.data);
         })
         .catch(e => {
           console.log(e);

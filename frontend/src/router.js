@@ -33,22 +33,6 @@ export const router = new Router({
       component: () => import('./views/Profile.vue')
     },    
     {
-      path: "/produtos",  
-      name: 'produto-list',
-      // lazy-loaded
-      component: () => import('./views/ProdutosList.vue')      
-    },    
-    {
-      path: "/produtos/:id",
-      name: "produto-details",
-      component: () => import("./views/Produto")
-    },
-    {
-      path: "/add",
-      name: "produto-add",
-      component: () => import("./views/AddProduto")      
-    },
-    {
       path: "/pessoas",  
       name: 'pessoa-list',
       component: () => import('./views/PessoasList.vue')      

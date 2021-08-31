@@ -11,33 +11,14 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// const produto = [];
-// const addProduto = (nome, descricao, status) => {
-//   produto.push({
-//     nome: nome,
-//     descricao: descricao,
-//     status: status
-//   });
-
-//   return {
-//     nome: nome,
-//     descricao: descricao,
-//     status: status
-//   };
-// }
-
-// const getProdutos = () => {
-//   return produto;
-// };
-
 const db = require("./app/models");
 db.sequelize.sync();
 
 const TipoUsuario = db.tipousuario;
-// db.sequelize.sync({force: true}).then(() => {
-//     console.log('Drop and Resync Db');
-//     initial();
-// });
+db.sequelize.sync({force: true}).then(() => {
+    console.log('Drop and Resync Db');
+    initial();
+});
 
 // simple route
 app.get("/", (req, res) => {
@@ -47,7 +28,6 @@ app.get("/", (req, res) => {
 // routes
 require('./app/routes/auth.routes')(app);
 require('./app/routes/usuarios.routes')(app);
-require('./app/routes/produtos.routes')(app);
 require('./app/routes/pessoas.routes')(app);
 
 // set port, listen for requests

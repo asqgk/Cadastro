@@ -23,8 +23,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-
-db.produto = require("./produto.model.js")(sequelize, Sequelize);
 db.usuario = require("./usuario.model.js")(sequelize, Sequelize);
 db.tipousuario = require("./tipousuario.model.js")(sequelize, Sequelize);
 db.pessoa = require("./pessoa.model.js")(sequelize, Sequelize);
